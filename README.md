@@ -34,4 +34,8 @@ cd /local/<your project>
 pipenv install --dev
 ```
 
-This will create a virtualenv in `/local/<your project>/venv/<some arbitrary directory>`. Because `/local` is mounted this virtualenv will be reusable even if you restart the container.
+This will create a virtualenv in `/local/<your project>/venv/<some arbitrary directory>`. Because `/local` is mounted this virtualenv will be reusable even if you restart the container. You can run commands inside the container with:
+
+```bash
+pipenv run <command>
+```
