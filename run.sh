@@ -1,11 +1,17 @@
 #!/bin/bash
 
-mkdir -p /scratch/${USER}/work
+if [ -f /scratch ]; then 
+   workdir=/scratch/${USER}/work
+else
+   workdir=/home/${USER}/work
+fi
+
+mkdir -p ${workdir}
+echo "Using ${workdir}"
 
 image=python-dev:latest
 environ="-e DISPLAY"
-volumes="-v /scratch/${USER}/work:/local \
-        -v /scratch/projects:/global \
+volumes="-v ${workdir}:/local \
         -v /home/${USER}/.ssh:/home/${USER}/.ssh \
         -v /home/${USER}/.bash_history:/home/${USER}/.bash_history"
 opts="--net=host --rm -ti"
